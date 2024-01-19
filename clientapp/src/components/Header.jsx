@@ -39,7 +39,7 @@ export default function Header() {
         <Link href="#" className='text-blue-800 font-bold'>Login</Link>
       </NavbarItem>
       <NavbarItem>
-        <Button as={Link} className='bg-blue-800 text-white ' href="#" variant="flat">
+        <Button as={Link} className='bg-blue-800 text-white ' href="/signup" variant="flat">
           Sign Up
         </Button>
       </NavbarItem>
