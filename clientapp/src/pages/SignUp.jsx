@@ -2,6 +2,8 @@ import React from 'react'
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Oauth from '../components/Oauth';
+
+const URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000/api";
 export default function SignUp() {
 
   const [formData, setFormData] = useState({});
@@ -17,7 +19,7 @@ export default function SignUp() {
     try {
       setLoading(true);
       setError(false);
-      const res = await fetch('/api/auth/signup', {
+      const res = await fetch(`${URL}/auth/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

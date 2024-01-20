@@ -18,6 +18,8 @@ import {
   signOut,
 } from '../redux/user/userSlice';
 
+const URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000/api";
+
 export default function Profile() {
   const dispatch = useDispatch();
   const fileRef = useRef(null);
@@ -63,11 +65,12 @@ export default function Profile() {
     e.preventDefault();
     try {
       dispatch(updateUserStart());
-      const res = await fetch(`/api/user/update/${currentUser._id}`, {
+      const res = await fetch(`${URL}/user/update/${currentUser._id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify(formData),
       });
       const data = await res.json();
@@ -86,7 +89,7 @@ export default function Profile() {
   const handleDeleteAccount = async () => {
     try {
       dispatch(deleteUserStart());
-      const res = await fetch(`/api/user/delete/${currentUser._id}`, {
+      const res = await fetch(`${URL}/user/delete/${currentUser._id}`, {
         method: 'DELETE',
       });
       const data = await res.json();
@@ -102,7 +105,7 @@ export default function Profile() {
 
   const handleSignOut = async () => {
     try {
-      await fetch('/api/auth/signout');
+      await fetch(`${URL}/auth/signout`);
       dispatch(signOut())
     } catch (error) {
       console.log(error);

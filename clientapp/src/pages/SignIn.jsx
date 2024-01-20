@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signInFailure, signInStart, signInSuccess } from '../redux/user/userSlice';
 import Oauth from '../components/Oauth';
 
+const URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000/api";
 export default function SignIn() {
 
   const [formData, setFormData] = useState({});
@@ -20,7 +21,7 @@ export default function SignIn() {
     e.preventDefault();
     try {
       dispatch(signInStart());
-      const res = await fetch('/api/auth/signin', {
+      const res = await fetch(`${URL}/auth/signin`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
