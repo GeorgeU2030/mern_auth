@@ -71,6 +71,7 @@ export default function Profile() {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
+      console.log(data);
       if (data.success === false) {
         dispatch(updateUserFailure(data));
         return;
@@ -118,12 +119,7 @@ export default function Profile() {
           accept='image/*'
           onChange={(e) => setImage(e.target.files[0])}
         />
-        {/* 
-      firebase storage rules:  
-      allow read;
-      allow write: if
-      request.resource.size < 2 * 1024 * 1024 &&
-      request.resource.contentType.matches('image/.*') */}
+       
         <img
           src={formData.profilePicture || currentUser.profilePicture}
           alt='profile'

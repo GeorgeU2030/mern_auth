@@ -34,7 +34,7 @@ export default function Header() {
 
     <NavbarContent justify="end">
       <NavbarItem className="hidden lg:flex mr-6">
-        <Link href="#" className='text-blue-800 font-bold'>About</Link>
+        <Link href="/about" className='text-blue-800 font-bold'>About</Link>
       </NavbarItem>
       <NavbarItem className="hidden lg:flex mr-6">
         <Link href="/signin" className='text-blue-800 font-bold'>Login</Link>
