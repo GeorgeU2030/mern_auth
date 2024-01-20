@@ -36,7 +36,7 @@ export default function Header() {
         <Link href="#" className='text-blue-800 font-bold'>About</Link>
       </NavbarItem>
       <NavbarItem className="hidden lg:flex mr-6">
-        <Link href="#" className='text-blue-800 font-bold'>Login</Link>
+        <Link href="/signin" className='text-blue-800 font-bold'>Login</Link>
       </NavbarItem>
       <NavbarItem>
         <Button as={Link} className='bg-blue-800 text-white ' href="/signup" variant="flat">
