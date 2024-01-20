@@ -1,7 +1,8 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, NavbarMenuItem, NavbarMenuToggle, NavbarMenu} from "@nextui-org/react";
 export default function Header() {
-
+    const { currentUser } = useSelector((state) => state.user);
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
     const menuItems = [
@@ -39,9 +40,15 @@ export default function Header() {
         <Link href="/signin" className='text-blue-800 font-bold'>Login</Link>
       </NavbarItem>
       <NavbarItem>
+        {currentUser ? (
+          <Link href='/profile'>
+         <img src={currentUser.profilePicture} alt='profile' className='h-7 w-7 rounded-full object-cover' />
+         </Link>
+        ) : (
         <Button as={Link} className='bg-blue-800 text-white ' href="/signup" variant="flat">
           Sign Up
         </Button>
+        )}
       </NavbarItem>
     </NavbarContent>
 
