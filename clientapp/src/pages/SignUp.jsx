@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Oauth from '../components/Oauth';
 
-const URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000/api";
+const URL = import.meta.env.VITE_BACKEND_URL ;
 export default function SignUp() {
 
   const [formData, setFormData] = useState({});

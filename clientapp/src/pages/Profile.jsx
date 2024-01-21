@@ -18,7 +18,7 @@ import {
   signOut,
 } from '../redux/user/userSlice';
 
-const URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000/api";
+const URL = import.meta.env.VITE_BACKEND_URL ;
 
 export default function Profile() {
   const dispatch = useDispatch();
