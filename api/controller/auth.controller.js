@@ -44,7 +44,7 @@ export const google = async (req, res, next) => {
             httpOnly: true,
             expires: expiryDate,
             domain: process.env.FRONTEND_URL,
-            sameSite: 'Lax', 
+            sameSite: 'None', 
             secure: true,
           })
           .status(200)
