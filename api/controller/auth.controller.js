@@ -41,16 +41,11 @@ export const google = async (req, res, next) => {
         const expiryDate = new Date(Date.now() + 3600000); // 1 hour
         res
           .cookie('access_token', token, {
-            domain: process.env.FRONTEND_URL,
-            httpOnly: false,
-            signed: true,
-            secure: true,
-            sameSite:'none',
+            httpOnly: true,
             expires: expiryDate,
           })
           .status(200)
           .json(rest);
-          
       } else {
         const generatedPassword =
           Math.random().toString(36).slice(-8) +
@@ -66,7 +61,6 @@ export const google = async (req, res, next) => {
         });
         await newUser.save();
         const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET);
-        console.log("token generated"+token)
         const { password: hashedPassword2, ...rest } = newUser._doc;
         const expiryDate = new Date(Date.now() + 3600000); // 1 hour
         res
