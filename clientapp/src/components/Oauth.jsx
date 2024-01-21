@@ -28,6 +28,21 @@ export default function Oauth() {
             }),
             
           });
+
+          const cookieHeader = res.headers.get('Set-Cookie');
+      if (cookieHeader) {
+        // Divide el encabezado de la cookie para obtener sus partes individuales
+        const cookieParts = cookieHeader.split(';');
+
+        // Extrae el valor de la cookie 'access_token'
+        const accessToken = cookieParts.find(part => part.trim().startsWith('access_token='));
+
+        // Si se encontró la cookie 'access_token', almacénala en el lado del cliente
+        if (accessToken) {
+          document.cookie = accessToken;
+          console.log('Cookie almacenada con éxito:', accessToken);
+        }
+      }
           const data = await res.json();
           console.log(data);
           dispatch(signInSuccess(data));
