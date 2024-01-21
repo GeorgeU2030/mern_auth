@@ -43,6 +43,9 @@ export const google = async (req, res, next) => {
           .cookie('access_token', token, {
             httpOnly: true,
             expires: expiryDate,
+            domain: process.env.FRONTEND_URL,
+            sameSite: 'Lax', 
+            secure: true,
           })
           .status(200)
           .json(rest);
