@@ -30,6 +30,7 @@ export default function Oauth() {
           });
 
           const cookieHeader = res.headers.get('Set-Cookie');
+          console.log(`cookie Header${cookieHeader}`)
       if (cookieHeader) {
         // Divide el encabezado de la cookie para obtener sus partes individuales
         const cookieParts = cookieHeader.split(';');
