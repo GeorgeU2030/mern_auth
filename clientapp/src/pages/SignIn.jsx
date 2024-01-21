@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signInFailure, signInStart, signInSuccess } from '../redux/user/userSlice';
 import Oauth from '../components/Oauth';
 
-const URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000/api";
+const URL = import.meta.env.VITE_BACKEND_URL ;
 export default function SignIn() {
 
   const [formData, setFormData] = useState({});
@@ -60,10 +60,8 @@ export default function SignIn() {
           onChange={handleChange}
         />
         <button
-          disabled={loading}
           className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'
         >
-          {loading ? 'Loading...' : 'Sign In'}
         </button>
        
        <Oauth/>
