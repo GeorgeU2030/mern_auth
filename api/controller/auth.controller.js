@@ -41,7 +41,11 @@ export const google = async (req, res, next) => {
         const expiryDate = new Date(Date.now() + 3600000); // 1 hour
         res
           .cookie('access_token', token, {
-            httpOnly: true,
+            domain: proccess.env.FRONTEND_URL,
+            httpOnly: false,
+            signed: true,
+            secure: true,
+            sameSite:'none',
             expires: expiryDate,
           })
           .status(200)
